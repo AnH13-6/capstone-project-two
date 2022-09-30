@@ -11,7 +11,6 @@ export default function BookList() {
 				const json = await response.json();
 				const data = json.data;
 				setBooks(data);
-				console.log(data);
 			} catch (error) {
 				console.log(error);
 			}
