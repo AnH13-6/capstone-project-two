@@ -8,9 +8,12 @@ export default function BookList() {
 		async function fetchBooks() {
 			try {
 				const response = await fetch('/api/books');
-				const json = await response.json();
-				const data = json.data;
-				setBooks(data);
+				if (response.ok) {
+					const data = await response.json();
+					setBooks(data);
+				} else {
+					throw new Error('fetch failed');
+				}
 			} catch (error) {
 				console.log(error);
 			}
@@ -23,18 +26,26 @@ export default function BookList() {
 					event.preventDefault();
 					const formData = new FormData(event.target);
 					const formValues = Object.fromEntries(formData);
-					const response = await fetch('/api/vacations', {
-						method: 'POST',
-						body: JSON.stringify(formValues),
-						headers: {'Content-Type': 'application/json'},
-					});
-					const json = await response.json();
-					const data = json.data;
-					setBooks(data);
+					try {
+						const response = await fetch('/api/books', {
+							method: 'POST',
+							body: JSON.stringify(formValues),
+							headers: {'Content-Type': 'application/json'},
+						});
+						if (response.ok) {
+							const data = await response.json();
+							console.log('returned book:', data);
+							setBooks([...books, data]);
+						} else {
+							throw new Error('post failed');
+						}
+					} catch (error) {
+						console.log(error);
+					}
 				}}
 			>
 				<label htmlFor="title">Title: </label>
-				<input type="text" placeholder="Moby Dick" required></input>
+				<input type="text" name="title" placeholder="Moby Dick" required></input>
 				<label htmlFor="author">Author: </label>
 				<input type="text" name="author" placeholder="Herman Melville" required></input>
 				<label htmlFor="rating">Rating: </label>
