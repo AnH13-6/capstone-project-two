@@ -12,6 +12,11 @@ export default async function Handler(request, response) {
 				response.status(200).json({success: true, data: books});
 				break;
 			}
+			case 'POST': {
+				const book = await Books.create(request.body);
+				response.status(201).json(book);
+				break;
+			}
 		}
 	} catch (error) {
 		console.log(error);
