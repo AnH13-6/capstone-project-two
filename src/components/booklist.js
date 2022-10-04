@@ -8,9 +8,12 @@ export default function BookList() {
 		async function fetchBooks() {
 			try {
 				const response = await fetch('/api/books');
-				const json = await response.json();
-				const data = json.data;
-				setBooks(data);
+				if (response.ok) {
+					const data = await response.json();
+					setBooks(data);
+				} else {
+					throw new Error('fetch failed');
+				}
 			} catch (error) {
 				console.log(error);
 			}
@@ -18,6 +21,37 @@ export default function BookList() {
 	}, []);
 	return (
 		<>
+			<form
+				onSubmit={async event => {
+					event.preventDefault();
+					const formData = new FormData(event.target);
+					const formValues = Object.fromEntries(formData);
+					try {
+						const response = await fetch('/api/books', {
+							method: 'POST',
+							body: JSON.stringify(formValues),
+							headers: {'Content-Type': 'application/json'},
+						});
+						if (response.ok) {
+							const data = await response.json();
+							console.log('returned book:', data);
+							setBooks([...books, data]);
+						} else {
+							throw new Error('post failed');
+						}
+					} catch (error) {
+						console.log(error);
+					}
+				}}
+			>
+				<label htmlFor="title">Title: </label>
+				<input type="text" name="title" placeholder="Moby Dick" required></input>
+				<label htmlFor="author">Author: </label>
+				<input type="text" name="author" placeholder="Herman Melville" required></input>
+				<label htmlFor="rating">Rating: </label>
+				<input type="number" min="1" max="10" name="rating" required></input>
+				<button type="submit">Add</button>
+			</form>
 			<ul>
 				{books.map(book => (
 					<li key={book._id}>
