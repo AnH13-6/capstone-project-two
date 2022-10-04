@@ -1,10 +1,10 @@
 import dbConnect from '../../backend/lib/dbConnect';
+import Book from '../../backend/models/bookModel';
 import Books from '../../backend/models/bookModel';
 
 async function Handler(request, response) {
 	try {
 		console.log('api/books called');
-		// await dbConnect();
 		console.log('db connected');
 		switch (request.method) {
 			case 'GET': {
@@ -18,11 +18,39 @@ async function Handler(request, response) {
 				response.status(201).json(book);
 				break;
 			}
+
+			//I used a different template for the PUT and DELETE methods, that's why they look different
+			// than GET and POST
+			case 'PUT':
+				try {
+					const book = await Books.findByIdAndUpdate(request.body._id, request.body);
+					if (!book) {
+						return response.status(400).json({success: false});
+					}
+					response.status(201).json({success: true, data: book});
+				} catch (error) {
+					response.status(400).json({success: false});
+				}
+				break;
+
+			case 'DELETE':
+				try {
+					const deletedBook = await Book.findByIdAndDelete(
+						request.body._id,
+						request.body
+					);
+					if (!deletedBook) {
+						return response.status(500).json({success: false});
+					}
+					response.status(201).json({success: true, data: {}});
+				} catch (error) {
+					response.status(401).json({success: false});
+				}
+				break;
 		}
 	} catch (error) {
 		console.log(error);
 		response.status(500).json({error: 'Internal Server Error'});
 	}
 }
-
 export default dbConnect(Handler);
