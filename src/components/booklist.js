@@ -19,33 +19,25 @@ export default function BookList() {
 			}
 		}
 	}, []);
-	// deleteFunction as used without mongodb:
-	// function deleteBook(bookId) {
-	// 	const newBooks = books.filter(book => {
-	// 		if (book._id !==bookId){
-	// 			return false;
-	// 		} else {
-	// 			return true;
-	// 		}
-	// 		});
-
-	// tried to match the below "PUT" method to the delete function
-	// try {
-	// 	const response = await fetch('/api/books', {
-	// 		method: 'DELETE',
-	// 		body: JSON.stringify(formValues),
-	// 		headers: {'Content-Type': 'application/json'},
-	// 	});
-	// 	if (response.ok) {
-	// 		const data = await response.json();
-	// 		console.log('returned book:', data);
-	// 		setBooks([...books, data]);
-	// 	} else {
-	// 		throw new Error('post failed');
-	// 	}
-	// } catch (error) {
-	// 	console.log(error);
-	// }
+	async function deleteBook(bookId) {
+		try {
+			const response = await fetch('/api/books', {
+				method: 'DELETE',
+				body: JSON.stringify({_id: bookId}),
+				headers: {'Content-Type': 'application/json'},
+			});
+			if (response.ok) {
+				const data = await response.json();
+				console.log('returned book:', data);
+				const newBooks = books.filter(book => book._id !== bookId);
+				setBooks(newBooks);
+			} else {
+				throw new Error('delete failed');
+			}
+		} catch (error) {
+			console.log(error);
+		}
+	}
 
 	return (
 		<>
@@ -85,16 +77,9 @@ export default function BookList() {
 					<li key={book._id}>
 						{book.title} by {book.author} Rating: {book.rating}{' '}
 						<button
-						// onClick={() => {
-						// 	//editBook(book._id);
-						// }}
-						>
-							Edit
-						</button>
-						<button
-						// onClick={() => {
-						// 	//deleteBook(bookId);
-						// }}
+							onClick={() => {
+								deleteBook(book._id);
+							}}
 						>
 							Delete
 						</button>

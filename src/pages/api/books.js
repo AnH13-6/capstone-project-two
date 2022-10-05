@@ -19,26 +19,12 @@ async function Handler(request, response) {
 				break;
 			}
 
-			//I used a different template for the PUT and DELETE methods, that's why they look different
+			// I used a different template for the DELETE methods, that's why they look different
 			// than GET and POST
-			case 'PUT':
-				try {
-					const book = await Books.findByIdAndUpdate(request.body._id, request.body);
-					if (!book) {
-						return response.status(400).json({success: false});
-					}
-					response.status(201).json({success: true, data: book});
-				} catch (error) {
-					response.status(400).json({success: false});
-				}
-				break;
 
 			case 'DELETE':
 				try {
-					const deletedBook = await Book.findByIdAndDelete(
-						request.body._id,
-						request.body
-					);
+					const deletedBook = await Book.findByIdAndDelete(request.body._id);
 					if (!deletedBook) {
 						return response.status(500).json({success: false});
 					}
