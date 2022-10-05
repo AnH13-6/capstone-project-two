@@ -6,7 +6,7 @@ POST http://localhost:3000/api/books
 Content-Type: application/json
 
 {
-    "title": "",
-    "author": "",
-    "rating": 
+    "title": "Hallo",
+    "author": "Test",
+    "rating": 4
 }

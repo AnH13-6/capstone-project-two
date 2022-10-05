@@ -19,6 +19,26 @@ export default function BookList() {
 			}
 		}
 	}, []);
+	async function deleteBook(bookId) {
+		try {
+			const response = await fetch('/api/books', {
+				method: 'DELETE',
+				body: JSON.stringify({_id: bookId}),
+				headers: {'Content-Type': 'application/json'},
+			});
+			if (response.ok) {
+				const data = await response.json();
+				console.log('returned book:', data);
+				const newBooks = books.filter(book => book._id !== bookId);
+				setBooks(newBooks);
+			} else {
+				throw new Error('delete failed');
+			}
+		} catch (error) {
+			console.log(error);
+		}
+	}
+
 	return (
 		<>
 			<form
@@ -55,7 +75,14 @@ export default function BookList() {
 			<ul>
 				{books.map(book => (
 					<li key={book._id}>
-						{book.title} by {book.author} Rating: {book.rating}
+						{book.title} by {book.author} Rating: {book.rating}{' '}
+						<button
+							onClick={() => {
+								deleteBook(book._id);
+							}}
+						>
+							Delete
+						</button>
 					</li>
 				))}
 			</ul>
