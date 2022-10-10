@@ -5,13 +5,13 @@ export default function Footer() {
 	return (
 		<StyledFooter>
 			<Navigation>
-				<Link href="/">
+				<Link href="/" passHref>
 					<StyledLink>Home</StyledLink>
 				</Link>
-				<Link href="/booklist">
+				<Link href="/booklist" passHref>
 					<StyledLink>Booklist</StyledLink>
 				</Link>
-				<Link href="/favoriteBooks">
+				<Link href="/favoriteBooks" passHref>
 					<StyledLink>Favorite Books</StyledLink>
 				</Link>
 			</Navigation>
@@ -28,10 +28,10 @@ const Navigation = styled.nav`
 `;
 
 const StyledLink = styled.a`
-	text-decoration: 'none';
-	&:hover,
-	&focus {
-		color: 'red';
+	color: black;
+	text-decoration: none;
+	&:hover {
+		color: red;
 	}
 	&:active {
 		color: darkred;
@@ -44,6 +44,5 @@ const StyledFooter = styled.footer`
 	flex-direction: column;
 	width: 100%;
 	border: 2px solid black;
-	border-radius: 10px;
 	background: teal;
 `;

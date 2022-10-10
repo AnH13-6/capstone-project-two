@@ -1,10 +1,10 @@
 import Head from 'next/head';
 
-import BookList from '../components/booklist';
+import BookList from '../components/Booklist';
 import Layout from '../components/Layout';
 import H1 from '../components/styledH1';
 
-export default function BookListPage() {
+export default function BookListPage({books, onHandleBooks}) {
 	return (
 		<>
 			<Layout>
@@ -13,7 +13,7 @@ export default function BookListPage() {
 					<meta key="description" name="description" content="About" />
 				</Head>
 				<H1>Booklist</H1>
-				<BookList />
+				<BookList books={books} onHandleBooks={onHandleBooks} />
 			</Layout>
 		</>
 	);

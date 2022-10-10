@@ -19,9 +19,6 @@ async function Handler(request, response) {
 				break;
 			}
 
-			// I used a different template for the DELETE methods, that's why they look different
-			// than GET and POST
-
 			case 'DELETE':
 				try {
 					const deletedBook = await Book.findByIdAndDelete(request.body._id);
