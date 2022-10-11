@@ -43,40 +43,32 @@ export default function BookList({books, onHandleBooks}) {
 
 	return (
 		<>
-			<Container>
-				<StyledList>
-					{books?.map(book => (
-						<li key={book._id}>
-							<Card>
-								<div>
-									<p>
-										{book.title} by {book.author}
-									</p>
-									<p>
-										Rated: {book.rating}
-										{'/10'}
-									</p>
-								</div>
+			<StyledList>
+				{books?.map(book => (
+					<li key={book._id}>
+						<Card>
+							<div>
+								<p>
+									{book.title} by {book.author}
+								</p>
+								<p>
+									Rated: {book.rating}
+									{'/10'}
+								</p>
+							</div>
 
-								<Button onClick={() => submit(book._id)}>Delete</Button>
-							</Card>
-						</li>
-					))}
-				</StyledList>
-			</Container>
+							<Button onClick={() => submit(book._id)}>Delete</Button>
+						</Card>
+					</li>
+				))}
+			</StyledList>
 		</>
 	);
 }
 
-const Container = styled.div`
-	padding: 10px;
-	gap: 5px;
-`;
-
 const StyledList = styled.ul`
-	justify-content: space-evenly;
 	margin-bottom: 4rem;
-	padding-left: 0;
+	padding: 10px;
 	list-style: none;
 	text-align: center;
 `;

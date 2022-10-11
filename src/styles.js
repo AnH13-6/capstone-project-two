@@ -12,7 +12,7 @@ export const GlobalStyle = createGlobalStyle`
 	}
 
 	#__next{
-width: 100%;
+		width: 100%;
 	}
 	body {
 		display: flex;

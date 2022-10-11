@@ -28,31 +28,40 @@ export default function BookForm({books, onHandleBooks}) {
 			}}
 		>
 			<Fieldset>
-				<div>
+				<p>
 					<label htmlFor="title">Title: </label>
 					<input
 						type="text"
+						id="title"
 						name="title"
 						placeholder="Moby Dick"
 						required
 						style={{width: '200px'}}
 					></input>
-				</div>
-				<div>
+				</p>
+				<p>
 					<label htmlFor="author">Author: </label>
 
 					<input
 						type="text"
+						id="author"
 						name="author"
 						placeholder="Herman Melville"
 						required
 						style={{width: '200px'}}
 					></input>
-				</div>
-				<div>
+				</p>
+				<p>
 					<label htmlFor="rating">Rating: </label>
-					<input type="number" min="1" max="10" name="rating" required></input>
-				</div>
+					<input
+						id="rating"
+						type="number"
+						min="1"
+						max="10"
+						name="rating"
+						required
+					></input>
+				</p>
 				<Button type="submit">Add</Button>
 			</Fieldset>
 		</form>
