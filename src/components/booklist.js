@@ -46,6 +46,7 @@ export default function BookList({books, onHandleBooks}) {
 			<StyledList>
 				{books?.map(book => (
 					<li key={book._id}>
+
 						<Card color={book.rating}>
 							<div>
 								<p>
