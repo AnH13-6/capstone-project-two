@@ -10,7 +10,6 @@ const Button = styled.button`
 	border: none;
 	background-color: transparent;
 	color: #eeeee4;
-
 	font-size: 1em;
 	&:hover {
 		background: #c39696;

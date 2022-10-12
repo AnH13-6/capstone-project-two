@@ -29,37 +29,41 @@ export default function BookForm({books, onHandleBooks}) {
 			<Fieldset>
 				<p>
 					<label htmlFor="title">Title: </label>
-					<input
+					<Input
 						type="text"
 						id="title"
 						name="title"
 						placeholder="Moby Dick"
 						required
 						style={{width: '200px'}}
-					></input>
+					/>
 				</p>
 				<p>
 					<label htmlFor="author">Author: </label>
 
-					<input
+					<Input
 						type="text"
 						id="author"
 						name="author"
 						placeholder="Herman Melville"
 						required
 						style={{width: '200px'}}
-					></input>
+					/>
 				</p>
 				<p>
 					<label htmlFor="rating">Rating: </label>
-					<input
-						id="rating"
-						type="number"
-						min="1"
-						max="10"
-						name="rating"
-						required
-					></input>
+					<Input id="rating" type="number" min="1" max="10" name="rating" required />
+				</p>
+				<p style={{verticalAlign: 'middle'}}>
+					<label htmlFor="readingNotes">Reading Notes: </label>
+					<Textarea
+						id="readingNotes"
+						type="textarea"
+						rows="6"
+						cols="18"
+						name="readingNotes"
+						placeholder="I didn't like the protagonist"
+					/>
 				</p>
 				<AddButton type="submit">
 					<AddCircleIcon style={{height: '45px', width: '45px'}} />
@@ -91,4 +95,15 @@ const AddButton = styled.button`
 	&:hover {
 		background: #c39696;
 	}
+`;
+
+const Input = styled.input`
+	border: transparent;
+	border-radius: 5px;
+`;
+
+const Textarea = styled.textarea`
+	border: transparent;
+	border-radius: 5px;
+	vertical-align: top;
 `;

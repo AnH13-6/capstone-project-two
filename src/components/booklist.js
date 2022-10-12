@@ -1,4 +1,5 @@
 import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
+import Link from 'next/link';
 import {confirmAlert} from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import styled from 'styled-components';
@@ -46,7 +47,6 @@ export default function BookList({books, onHandleBooks}) {
 			<StyledList>
 				{books?.map(book => (
 					<li key={book._id}>
-
 						<Card color={book.rating}>
 							<div>
 								<p>
@@ -57,10 +57,16 @@ export default function BookList({books, onHandleBooks}) {
 									{'/10'}
 								</p>
 							</div>
-
-							<Button onClick={() => submit(book._id)}>
-								<RemoveCircleIcon />
-							</Button>
+							<ButtonContainer>
+								<Button>
+									<Link href={`/${book._id}`} passHref>
+										See more
+									</Link>
+								</Button>
+								<Button onClick={() => submit(book._id)}>
+									<RemoveCircleIcon />
+								</Button>
+							</ButtonContainer>
 						</Card>
 					</li>
 				))}
@@ -97,4 +103,9 @@ const Card = styled.div`
 	${props => props.color === 10 && 'background-color: #b9fbc0'};
 	box-shadow: rgba(99, 99, 99, 0.2) 0 2px 8px 0;
 	word-wrap: break-word;
+`;
+
+const ButtonContainer = styled.div`
+	flex-direction: column;
+	justify-content: flex-start;
 `;
