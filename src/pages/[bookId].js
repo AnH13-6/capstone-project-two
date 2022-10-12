@@ -8,10 +8,7 @@ import Title from '../components/StyledTitle';
 export default function Detailpage({books}) {
 	const router = useRouter();
 	const bookId = router.query.bookId;
-
 	const book = books.find(event => event._id === bookId);
-	console.log(bookId);
-	console.log(books);
 
 	return (
 		<Layout>
@@ -23,10 +20,16 @@ export default function Detailpage({books}) {
 				<>
 					<Title>{book.title}</Title>
 					<DetailCard>
-						<p>Author: {book.author}</p>
-						<p>Rating: {book.rating}/10</p>
-						<h3>Reading Notes</h3>
-						<p>{book.readingNotes}</p>
+						<li>
+							<p>Author: {book.author}</p>
+						</li>
+						<li>
+							<p>Rating: {book.rating}/10</p>
+						</li>
+						<li>
+							<h3>Reading Notes</h3>
+						</li>
+						<li>{book.readingNotes}</li>
 					</DetailCard>
 				</>
 			)}
@@ -34,7 +37,7 @@ export default function Detailpage({books}) {
 	);
 }
 
-const DetailCard = styled.span`
+const DetailCard = styled.ul`
 	display: flex;
 	flex-direction: column;
 	width: 300px;
@@ -44,5 +47,6 @@ const DetailCard = styled.span`
 	padding: 5px;
 	border-radius: 0.25rem;
 	box-shadow: rgba(100, 100, 100, 0.2) 0 3px 8px 0;
+	list-style: none;
 	word-wrap: break-word;
 `;

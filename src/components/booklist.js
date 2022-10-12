@@ -4,8 +4,6 @@ import {confirmAlert} from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import styled from 'styled-components';
 
-// import {useRouter} from 'next/router';
-
 import Button from './StyledButton';
 
 export default function BookList({books, onHandleBooks}) {

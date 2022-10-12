@@ -36,7 +36,7 @@ export default function BookForm({books, onHandleBooks}) {
 						placeholder="Moby Dick"
 						required
 						style={{width: '200px'}}
-					></Input>
+					/>
 				</p>
 				<p>
 					<label htmlFor="author">Author: </label>
@@ -48,20 +48,13 @@ export default function BookForm({books, onHandleBooks}) {
 						placeholder="Herman Melville"
 						required
 						style={{width: '200px'}}
-					></Input>
+					/>
 				</p>
 				<p>
 					<label htmlFor="rating">Rating: </label>
-					<Input
-						id="rating"
-						type="number"
-						min="1"
-						max="10"
-						name="rating"
-						required
-					></Input>
+					<Input id="rating" type="number" min="1" max="10" name="rating" required />
 				</p>
-				<div style={{verticalAlign: 'middle'}}>
+				<p style={{verticalAlign: 'middle'}}>
 					<label htmlFor="readingNotes">Reading Notes: </label>
 					<Textarea
 						id="readingNotes"
@@ -70,8 +63,8 @@ export default function BookForm({books, onHandleBooks}) {
 						cols="18"
 						name="readingNotes"
 						placeholder="I didn't like the protagonist"
-					></Textarea>
-				</div>
+					/>
+				</p>
 				<AddButton type="submit">
 					<AddCircleIcon style={{height: '45px', width: '45px'}} />
 				</AddButton>
