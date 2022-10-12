@@ -1,6 +1,5 @@
+import AddCircleIcon from '@mui/icons-material/AddCircle';
 import styled from 'styled-components';
-
-import Button from './StyledButton';
 
 export default function BookForm({books, onHandleBooks}) {
 	return (
@@ -62,15 +61,34 @@ export default function BookForm({books, onHandleBooks}) {
 						required
 					></input>
 				</p>
-				<Button type="submit">Add</Button>
+				<AddButton type="submit">
+					<AddCircleIcon style={{height: '45px', width: '45px'}} />
+				</AddButton>
 			</Fieldset>
 		</form>
 	);
 }
 
 const Fieldset = styled.fieldset`
-	display: grid;
+	display: flex;
+	flex-direction: column;
 	gap: 8px;
-	justify-content: center;
 	margin-top: 55px;
+	border: none;
+	background-color: #fbf8cc;
+	box-shadow: rgba(99, 99, 99, 0.2) 0 2px 8px 0;
+`;
+
+const AddButton = styled.button`
+	align-self: flex-end;
+	width: 55px;
+	height: 55px;
+	margin: 0.5em 15px 0;
+	padding: 0.25em 0.25em;
+	border: none;
+	background-color: transparent;
+	color: #76b5c5;
+	&:hover {
+		background: #c39696;
+	}
 `;
