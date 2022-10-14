@@ -1,4 +1,5 @@
-import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import ReadMoreIcon from '@mui/icons-material/ReadMore';
 import Link from 'next/link';
 import {confirmAlert} from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
@@ -58,13 +59,15 @@ export default function BookList({books, onHandleBooks}) {
 								</p>
 							</div>
 							<ButtonContainer>
+								<Button onClick={() => submit(book._id)}>
+									<DeleteForeverIcon />
+								</Button>
 								<Button>
 									<Link href={`/${book._id}`} passHref>
-										See more
+										<StyledLink>
+											<ReadMoreIcon />
+										</StyledLink>
 									</Link>
-								</Button>
-								<Button onClick={() => submit(book._id)}>
-									<RemoveCircleIcon />
 								</Button>
 							</ButtonContainer>
 						</Card>
@@ -105,7 +108,11 @@ const Card = styled.div`
 	word-wrap: break-word;
 `;
 
+const StyledLink = styled.a`
+	color: #eeeee4;
+`;
+
 const ButtonContainer = styled.div`
-	flex-direction: column;
-	justify-content: flex-start;
+	display: flex;
+	justify-content: flex-end;
 `;

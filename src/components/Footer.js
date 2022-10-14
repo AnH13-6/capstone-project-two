@@ -29,10 +29,11 @@ const StyledLink = styled.a`
 	font-size: 18px;
 	text-decoration: none;
 	&:hover {
-		color: red;
+		color: white;
 	}
 	&:active {
-		color: darkred;
+		background-color: #024;
+		color: #fff;
 	}
 `;
 

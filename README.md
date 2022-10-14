@@ -22,13 +22,8 @@ It uses the following tools/libraries:
 
 -   [Next.js](https://nextjs.org/)
 -   [Storybook](https://storybook.js.org/)
--   [Jest](https://jestjs.io/)
--   [Testing Library](https://testing-library.com/)
--   [Stylelint](https://stylelint.io/)
--   [Eslint](https://eslint.org/)
 -   [Prettier](https://prettier.io/)
 -   [Husky](https://typicode.github.io/husky/)
--   [Zustand](https://zustand-demo.pmnd.rs/)
 
 ## Project Setup
 
