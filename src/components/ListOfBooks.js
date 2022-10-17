@@ -64,9 +64,7 @@ export default function BookList({books, onHandleBooks}) {
 								</Button>
 								<Button>
 									<Link href={`/${book._id}`} passHref>
-										<StyledLink>
-											<ReadMoreIcon />
-										</StyledLink>
+										<ReadMoreIcon />
 									</Link>
 								</Button>
 							</ButtonContainer>
@@ -106,10 +104,6 @@ const Card = styled.div`
 	${props => props.color === 10 && 'background-color: #b9fbc0'};
 	box-shadow: rgba(99, 99, 99, 0.2) 0 2px 8px 0;
 	word-wrap: break-word;
-`;
-
-const StyledLink = styled.a`
-	color: #eeeee4;
 `;
 
 const ButtonContainer = styled.div`
