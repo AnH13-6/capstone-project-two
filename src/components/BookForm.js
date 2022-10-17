@@ -8,6 +8,8 @@ export default function BookForm({books, onHandleBooks}) {
 				event.preventDefault();
 				const formData = new FormData(event.target);
 				const formValues = Object.fromEntries(formData);
+				event.target.reset();
+
 				try {
 					const response = await fetch('/api/books', {
 						method: 'POST',
@@ -62,7 +64,7 @@ export default function BookForm({books, onHandleBooks}) {
 						rows="6"
 						cols="18"
 						name="readingNotes"
-						placeholder="I didn't like the protagonist"
+						placeholder="I didn't like the whale"
 					/>
 				</p>
 				<AddButton type="submit">
@@ -87,13 +89,15 @@ const AddButton = styled.button`
 	align-self: flex-end;
 	width: 55px;
 	height: 55px;
-	margin: 0.5em 15px 0;
-	padding: 0.25em 0.25em;
 	border: none;
 	background-color: transparent;
 	color: #76b5c5;
 	&:hover {
-		background: #c39696;
+		color: #015958;
+	}
+	&:active {
+		background-color: #024;
+		color: #ffff;
 	}
 `;
 

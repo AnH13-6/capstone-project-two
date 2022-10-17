@@ -1,7 +1,7 @@
 import Head from 'next/head';
 
-import BookList from '../components/Booklist';
 import Layout from '../components/Layout';
+import BookList from '../components/ListOfBooks';
 import Title from '../components/StyledTitle';
 
 export default function BookListPage({books, onHandleBooks}) {

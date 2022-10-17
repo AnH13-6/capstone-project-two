@@ -8,11 +8,12 @@ const Button = styled.button`
 	margin: 0.5em 5px 5px;
 	padding: 0.25em 0.25em;
 	border: none;
-	background-color: transparent;
+	border-radius: 50%;
+	background-color: #76b5c5;
 	color: #eeeee4;
 	font-size: 1em;
 	&:hover {
-		background: #c39696;
+		color: #76b5c5;
 	}
 `;
 
